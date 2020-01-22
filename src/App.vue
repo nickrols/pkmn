@@ -19,6 +19,12 @@
         <b-navbar-nav>
 
           <b-nav-item href="#">
+            <router-link to='/'>
+              Accueil
+            </router-link>
+          </b-nav-item>
+
+          <b-nav-item href="#">
             <router-link to='/List/favorite'>
               Favoris
             </router-link>
