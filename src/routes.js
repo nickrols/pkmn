@@ -7,7 +7,7 @@ const routes = [
     { path: '/Detail/:id', component: Detail },
     { path: '/List', component: List },
     { path: '/List/:type', component: List },
-    { path: '/List/pkmnInBooster/:id', component: List },
+    { path: '/pkmnInBooster/:id', component: List },
 ];
 
 export default routes;

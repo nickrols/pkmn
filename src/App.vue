@@ -45,6 +45,18 @@
             </router-link>
           </b-nav-item>
 
+          <b-nav-item href="#">
+            <router-link to='/List/Break'>
+              Pokémon Break
+            </router-link>
+          </b-nav-item>
+
+          <b-nav-item href="#">
+            <router-link to='/List/Legend'>
+              Pokémon Legend
+            </router-link>
+          </b-nav-item>
+
         </b-navbar-nav>
 
       </b-collapse>

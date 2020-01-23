@@ -1,8 +1,7 @@
 <template>
 
-    <div>
 
-        <b-card no-body class="overflow-hidden" style="max-width: 540px;">
+        <b-card no-body class="overflow-hidden" style="max-width: 540px;display: inline-block;padding: 10px;margin: 10px;">
             <b-row no-gutters>
                 <b-col md="6">
                     <b-card-img :src="this.data.imageUrl" :img-alt="Image" class="rounded-0"></b-card-img>
@@ -18,13 +17,12 @@
                             Nombre  : {{this.data.number}} <br />
                             Id National Dex : {{this.data.nationalPokedexNumber}}
                         </b-card-text>
-                        <b-button href="#" variant="primary">Favoris</b-button>
+                        <b-button href="#" onclick="alert('r');" variant="primary">Favoris</b-button>
                     </b-card-body>
                 </b-col>
             </b-row>
         </b-card>
 
-    </div>
 
 </template>
 

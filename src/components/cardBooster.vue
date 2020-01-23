@@ -1,6 +1,6 @@
 <template>
 
-    <div>
+    <div style="display: inline-block;padding: 10px;margin: 10px;">
 
         <router-link :to="'/pkmnInBooster/' + this.data.code">
             <b-card

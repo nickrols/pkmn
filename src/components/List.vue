@@ -2,14 +2,15 @@
 
 	<div class="List">
 
-		<div v-for="item in this.posts" v-bind:key="item">
 
+		<div v-if=" $route.params.type != 'booster' ">
 			<cardPkmn
-					v-if=" $route.params.type != 'booster' "
+					v-for="item in this.posts" v-bind:key="item"
 					v-bind:data="item" ></cardPkmn>
-
+		</div>
+		<div v-if=" $route.params.type == 'booster' ">
 			<cardBooster
-					v-if=" $route.params.type == 'booster' "
+					v-for="item in this.posts" v-bind:key="item"
 					v-bind:data="item" ></cardBooster>
 		</div>
 
@@ -47,6 +48,12 @@
 				urlApi = `https://api.pokemontcg.io/v1/cards?subtype=EX&pageSize=15`;
 			} else if (this.$route.params.type == 'booster') {
 				urlApi = `https://api.pokemontcg.io/v1/sets`;
+			} else if (this.$route.params.type == 'Break') {
+				urlApi = `https://api.pokemontcg.io/v1/cards?subtype=Break&pageSize=15`;
+			} else if (this.$route.params.type == 'Legend') {
+				urlApi = `https://api.pokemontcg.io/v1/cards?subtype=Legend&pageSize=15`;
+			} else if (this.$route.path.includes('pkmnInBooster')) {
+				urlApi = `https://api.pokemontcg.io/v1/cards?setCode=`+ this.$route.params.id +`&pageSize=15`;
 			}
 
 			axios.get(urlApi)
@@ -73,6 +80,12 @@
 				urlApi = `https://api.pokemontcg.io/v1/cards?subtype=EX&pageSize=15`;
 			} else if (this.$route.params.type == 'booster') {
 				urlApi = `https://api.pokemontcg.io/v1/sets`;
+			} else if (this.$route.params.type == 'Break') {
+				urlApi = `https://api.pokemontcg.io/v1/cards?subtype=Break&pageSize=15`;
+			} else if (this.$route.params.type == 'Legend') {
+				urlApi = `https://api.pokemontcg.io/v1/cards?subtype=Legend&pageSize=15`;
+			} else if (this.$route.path.includes('pkmnInBooster')) {
+				urlApi = `https://api.pokemontcg.io/v1/cards?setCode=`+ this.$route.params.id +`&pageSize=15`;
 			}
 
 			axios.get(urlApi)
