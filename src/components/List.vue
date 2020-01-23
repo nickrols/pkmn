@@ -31,6 +31,7 @@
 		data() {
 			return {
 				posts: [],
+				url: '',
 			}
 		},
 
@@ -70,37 +71,45 @@
 						this.errors.push(e)
 					})
 
+			this.url = this.$route.path;
+
 		},
 
 		updated: function() {
 
-			let urlApi = 'https://api.pokemontcg.io/v1/cards?pageSize=15';
+			if (this.url !== this.$route.path) {
 
-			if (this.$route.params.type == 'ex') {
-				urlApi = `https://api.pokemontcg.io/v1/cards?subtype=EX&pageSize=15`;
-			} else if (this.$route.params.type == 'booster') {
-				urlApi = `https://api.pokemontcg.io/v1/sets`;
-			} else if (this.$route.params.type == 'Break') {
-				urlApi = `https://api.pokemontcg.io/v1/cards?subtype=Break&pageSize=15`;
-			} else if (this.$route.params.type == 'Legend') {
-				urlApi = `https://api.pokemontcg.io/v1/cards?subtype=Legend&pageSize=15`;
-			} else if (this.$route.path.includes('pkmnInBooster')) {
-				urlApi = `https://api.pokemontcg.io/v1/cards?setCode=`+ this.$route.params.id +`&pageSize=15`;
+				let urlApi = 'https://api.pokemontcg.io/v1/cards?pageSize=15';
+
+				if(this.$route.params.type == 'ex') {
+					urlApi = `https://api.pokemontcg.io/v1/cards?subtype=EX&pageSize=15`;
+				} else if (this.$route.params.type == 'booster') {
+					urlApi = `https://api.pokemontcg.io/v1/sets`;
+				} else if (this.$route.params.type == 'Break') {
+					urlApi = `https://api.pokemontcg.io/v1/cards?subtype=Break&pageSize=15`;
+				} else if (this.$route.params.type == 'Legend') {
+					urlApi = `https://api.pokemontcg.io/v1/cards?subtype=Legend&pageSize=15`;
+				} else if (this.$route.path.includes('pkmnInBooster')) {
+					urlApi = `https://api.pokemontcg.io/v1/cards?setCode=`+ this.$route.params.id +`&pageSize=15`;
+				}
+
+				axios.get(urlApi)
+						.then(response => {
+
+							if (this.$route.params.type != 'booster') {
+								this.posts = response.data.cards
+							} else if (this.$route.params.type == 'booster') {
+								this.posts = response.data.sets
+							}
+
+						})
+						.catch(e => {
+							this.errors.push(e)
+						})
+
+				this.url = this.$route.path;
+
 			}
-
-			axios.get(urlApi)
-					.then(response => {
-
-						if (this.$route.params.type != 'booster') {
-							this.posts = response.data.cards
-						} else if (this.$route.params.type == 'booster') {
-							this.posts = response.data.sets
-						}
-
-					})
-					.catch(e => {
-						this.errors.push(e)
-					})
 
 		},
 
