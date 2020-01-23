@@ -6,8 +6,11 @@
       <b-navbar-brand href="#">
 
         <router-link to='/'>
-          <img    class="imgLogo"
+
+          <img
+                  class="imgLogo"
                   src="https://i.pinimg.com/originals/f7/b4/1b/f7b41b0b170d8765d7f6684497c7763a.png" alt="PokéBall">
+
         </router-link>
 
       </b-navbar-brand>
@@ -31,7 +34,7 @@
           </b-nav-item>
 
           <b-nav-item>
-            <router-link to='/Booster'>
+            <router-link to='/List/booster'>
               Booster
             </router-link>
           </b-nav-item>
@@ -79,6 +82,5 @@
     width: 30px;
     height: 30px;
   }
-
 
 </style>

@@ -1,6 +1,6 @@
 <template>
 
-    <div>
+    <div style="padding: 10px;">
 
         <b-input-group>
 
@@ -29,13 +29,24 @@
 
         </b-input-group>
 
+        <div style="margin-top: 10px;">
+            <List />
+        </div>
+
+
     </div>
 
 </template>
 
 <script>
 
+    import List from './List'
+
     export default {
+
+        components: {
+            List
+        },
 
     }
 
